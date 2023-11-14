@@ -2,6 +2,7 @@ package christmas.controller;
 
 import christmas.domain.Orders;
 import christmas.domain.VisitDate;
+import christmas.formatter.StringFormatter;
 import christmas.service.OrderService;
 import christmas.util.PrintMessage;
 import christmas.view.InputView;
@@ -13,12 +14,15 @@ public class EventController {
     private final InputView inputView;
     private final OutputView outputView;
     private final OrderService orderService;
+    private final StringFormatter stringFormatter;
 
     //todo: Config 이용
     public EventController() {
         inputView = new InputView();
         outputView = new OutputView();
         orderService = new OrderService();
+        stringFormatter = new StringFormatter();
+
     }
 
     public void game() {
@@ -27,7 +31,7 @@ public class EventController {
         VisitDate visitDate = createVisitDate();
         Orders orders = createOrders();
 
-        //todo: 혜택 출력
+        outputView.printMessage(stringFormatter.getFormattedStartEventBenefitMessage(visitDate));
     }
 
 
@@ -58,7 +62,7 @@ public class EventController {
                 domain = createDomainSupplier.get();
                 flag = true;
             } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage()+" 다시 입력해 주세요.");
+                System.out.println(e.getMessage() + " 다시 입력해 주세요.");
             }
         }
 

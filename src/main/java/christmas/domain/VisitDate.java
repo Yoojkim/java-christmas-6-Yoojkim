@@ -13,6 +13,10 @@ public class VisitDate {
         this.visitDate = date;
     }
 
+    public int getVisitDate() {
+        return visitDate;
+    }
+
     private void validateDate(int date) {
         if (date < MIN || date > MAX) {
             throw new IllegalArgumentException(ErrorMessage.VISIT_DATE_RANGE.getMessage());
