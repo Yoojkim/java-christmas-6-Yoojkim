@@ -4,7 +4,6 @@ import christmas.util.DiscountWeekType;
 import christmas.util.ErrorMessage;
 import christmas.util.WeekCalculator;
 
-import java.util.Set;
 
 public class VisitDate {
     private final int MIN = 1;
@@ -12,6 +11,8 @@ public class VisitDate {
     private final int CHRISTMAS = 25;
     private final int YEAR = 2023;
     private final int MONTH = 12;
+    private final int START_CHRISTMAS_DISCOUNT = 1000;
+    private final int CHRISTMAS_INCREASE_VALUE = 100;
 
     private int visitDate;
 
@@ -28,21 +29,12 @@ public class VisitDate {
         return WeekCalculator.calculateWeekType(YEAR, MONTH, visitDate);
     }
 
-    //todo: Set 자료형 VisitDate
-    public boolean isSpecialDiscountDate(Set<Integer> set) {
-        if (set.contains(visitDate)) {
-            return true;
-        }
-
-        return false;
-    }
-
-    public int getChristmasDDayDiscount() {
+    public int calculateChristmasDiscount() {
         if (!isChristMasDiscountTarget()) {
             return 0;
         }
 
-        return 1000 + (visitDate - 1) * 100;
+        return START_CHRISTMAS_DISCOUNT + (visitDate - 1) * CHRISTMAS_INCREASE_VALUE;
     }
 
     private boolean isChristMasDiscountTarget() {
@@ -55,4 +47,21 @@ public class VisitDate {
         }
     }
 
+    //todo: compare hashcode
+
+
+    @Override
+    public int hashCode() {
+        return visitDate;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof VisitDate)) {
+            return false;
+        }
+
+        VisitDate objVisitDate = (VisitDate) obj;
+        return visitDate == objVisitDate.getVisitDate();
+    }
 }
