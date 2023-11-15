@@ -1,20 +1,21 @@
 package christmas.domain;
 
-import java.util.Set;
+import christmas.util.Menu;
+import christmas.util.SpecialDays;
 
 public class OrderSheet {
-    private final int SPECIAL_DISCOUNT=1000;
+    private final Menu GIVEAWAY = Menu.CHAMPAGNE;
+    private final int SPECIAL_DISCOUNT = 1000;
     private final Orders orders;
     private final VisitDate visitDate;
-
 
     public OrderSheet(Orders orders, VisitDate visitDate) {
         this.orders = orders;
         this.visitDate = visitDate;
     }
 
-    public int calculateSpecialDiscount(){
-        if(SpecialDays.isSpecialDay(visitDate)){
+    public int calculateSpecialDiscount() {
+        if (SpecialDays.isSpecialDay(visitDate)) {
             return SPECIAL_DISCOUNT;
         }
 
@@ -33,8 +34,12 @@ public class OrderSheet {
         return orders.getWeekTypeDiscountPrice(visitDate.getWeekType());
     }
 
-    public boolean hasGiveAway() {
-        return orders.hasGiveAway();
+    public Menu calculateGiveAway() {
+        if (orders.hasGiveAway()) {
+            return GIVEAWAY;
+        }
+
+        return Menu.NONE;
     }
 }
 

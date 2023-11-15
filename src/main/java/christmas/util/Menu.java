@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public enum Menu {
-
+    NONE("",0,MenuType.NONE),
     MUSHROOM_SOUP("양송이수프", 6000, MenuType.APPETIZER),
     TAPAS("타파스", 5500, MenuType.APPETIZER),
     CAESAR_SALAD("시저샐러드", 8000, MenuType.APPETIZER),
@@ -60,6 +60,6 @@ public enum Menu {
     }
 
     public enum MenuType {
-        APPETIZER, MAIN, DESSERT, DRINK
+        APPETIZER, MAIN, DESSERT, DRINK, NONE
     }
 }
