@@ -1,10 +1,7 @@
 package christmas.controller;
 
-import christmas.domain.Benefit;
-import christmas.domain.OrderSheet;
 import christmas.domain.Orders;
 import christmas.domain.VisitDate;
-import christmas.formatter.StringFormatter;
 import christmas.service.BenefitService;
 import christmas.service.OrderService;
 import christmas.util.PrintMessage;
@@ -17,7 +14,6 @@ public class EventController {
     private final InputView inputView;
     private final OutputView outputView;
     private final OrderService orderService;
-    private final StringFormatter stringFormatter;
     private final BenefitService benefitService;
 
     //todo: Config 이용
@@ -25,24 +21,24 @@ public class EventController {
         inputView = new InputView();
         outputView = new OutputView();
         orderService = new OrderService();
-        stringFormatter = new StringFormatter();
         benefitService = new BenefitService();
     }
 
     public void game() {
-        outputView.printMessage(PrintMessage.START_EVENT_PLANNER);
-
+        outputView.printPrintMessage(PrintMessage.START_EVENT_PLANNER);
         VisitDate visitDate = createVisitDate();
         Orders orders = createOrders();
+        outputView.printStartEventBenefit(visitDate.getVisitDate());
 
-        outputView.printMessage(stringFormatter.getFormattedStartEventBenefitMessage(visitDate));
+        //주문 메뉴 출력
 
-        Benefit benefit = benefitService.calculateBenefit(new OrderSheet(orders, visitDate));
+        //할인 관련 출력
+
+        //혜택 내역 출력
     }
 
-
     private VisitDate createVisitDate() {
-        outputView.printMessage(PrintMessage.INPUT_VISIT_DATE);
+        outputView.printPrintMessage(PrintMessage.INPUT_VISIT_DATE);
 
         return repeatInputForException(() -> {
             String input = inputView.input();
@@ -51,7 +47,7 @@ public class EventController {
     }
 
     private Orders createOrders() {
-        outputView.printMessage(PrintMessage.INPUT_ORDERS);
+        outputView.printPrintMessage(PrintMessage.INPUT_ORDERS);
 
         return repeatInputForException(() -> {
             String input = inputView.input();
