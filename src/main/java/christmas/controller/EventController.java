@@ -1,8 +1,11 @@
 package christmas.controller;
 
+import christmas.domain.Benefit;
+import christmas.domain.OrderSheet;
 import christmas.domain.Orders;
 import christmas.domain.VisitDate;
 import christmas.formatter.StringFormatter;
+import christmas.service.BenefitService;
 import christmas.service.OrderService;
 import christmas.util.PrintMessage;
 import christmas.view.InputView;
@@ -15,6 +18,7 @@ public class EventController {
     private final OutputView outputView;
     private final OrderService orderService;
     private final StringFormatter stringFormatter;
+    private final BenefitService benefitService;
 
     //todo: Config 이용
     public EventController() {
@@ -22,7 +26,7 @@ public class EventController {
         outputView = new OutputView();
         orderService = new OrderService();
         stringFormatter = new StringFormatter();
-
+        benefitService = new BenefitService();
     }
 
     public void game() {
@@ -32,6 +36,8 @@ public class EventController {
         Orders orders = createOrders();
 
         outputView.printMessage(stringFormatter.getFormattedStartEventBenefitMessage(visitDate));
+
+        Benefit benefit = benefitService.calculateBenefit(new OrderSheet(orders, visitDate));
     }
 
 

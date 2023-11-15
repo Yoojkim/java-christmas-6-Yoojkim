@@ -43,6 +43,10 @@ public enum Menu {
         return type;
     }
 
+    public int getCost() {
+        return cost;
+    }
+
     public static Menu createMenu(String manuName) {
         validateMenuName(manuName);
 

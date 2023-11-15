@@ -13,6 +13,10 @@ public class Order {
         this.quantity = quantity;
     }
 
+    public int getOrderPrice() {
+        return menu.getCost() * quantity.getQuantity();
+    }
+
     public boolean isOrderExist(Set<Menu> orderMenuSet) {
         return orderMenuSet.contains(menu);
     }
@@ -32,7 +36,7 @@ public class Order {
         return quantity.getQuantity();
     }
 
-    public boolean isMenuNotDrinkType() {
-        return menu.getType() != Menu.MenuType.DRINK;
+    public boolean hasMenuType(Menu.MenuType menuType) {
+        return menu.getType()==menuType;
     }
 }
