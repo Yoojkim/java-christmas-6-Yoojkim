@@ -27,7 +27,7 @@ public class EventController {
         this.benefitService = benefitService;
     }
 
-    public void game() {
+    public void event() {
         outputView.printPrintMessage(PrintMessage.START_EVENT_PLANNER);
         VisitDate visitDate = createVisitDate();
         Orders orders = createOrders();
