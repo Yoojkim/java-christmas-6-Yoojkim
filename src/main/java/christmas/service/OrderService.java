@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OrderService {
-    public VisitDate createVisitDate(String inputDate) {
+    public VisitDate createVisitDate(final String inputDate) {
         int date = parseStringToInt(inputDate, ErrorMessage.VISIT_DATE_RANGE);
 
         return new VisitDate(date);
@@ -29,7 +29,7 @@ public class OrderService {
         return new Orders(orders);
     }
 
-    private Order createOrder(String inputOrder) {
+    private Order createOrder(final String inputOrder) {
         String orderSeparator = "-";
 
         String[] separatedOrder = inputOrder.split(orderSeparator, -1);
@@ -38,13 +38,13 @@ public class OrderService {
         return Order.createOrder(separatedOrder[0], parseStringToInt(separatedOrder[1], ErrorMessage.MENU_NOT_PROPER));
     }
 
-    private void validateSeparatedOrderFormat(String[] separatedOrder) {
+    private void validateSeparatedOrderFormat(final String[] separatedOrder) {
         if (separatedOrder.length != 2) {
             throw new IllegalArgumentException(ErrorMessage.MENU_NOT_PROPER.getMessage());
         }
     }
 
-    private Integer parseStringToInt(String value,ErrorMessage errorMessage) {
+    private Integer parseStringToInt(final String value, final ErrorMessage errorMessage) {
         Integer formattedValue = null;
 
         try {

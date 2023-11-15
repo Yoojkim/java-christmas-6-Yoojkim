@@ -8,7 +8,7 @@ import christmas.util.Menu;
 public record BenefitDto(int beforeDiscountPrice, Menu giveAway, int giveAwayQuantity, int christMasDiscount,
                          int weekDiscount, int specialDiscount, String weekTypeName,
                          int allDiscount, int afterDiscountPrice, Badge badge) {
-    public static BenefitDto from(OrderSheet orderSheet, Benefit benefit) {
+    public static BenefitDto from(final OrderSheet orderSheet, final Benefit benefit) {
         int orderSheetPrice = orderSheet.calculateAllPrice();
 
         return new BenefitDto(orderSheetPrice,

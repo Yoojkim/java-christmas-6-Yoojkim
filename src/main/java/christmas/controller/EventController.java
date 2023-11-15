@@ -20,12 +20,11 @@ public class EventController {
     private final OrderService orderService;
     private final BenefitService benefitService;
 
-    //todo: Config 이용
-    public EventController() {
-        inputView = new InputView();
-        outputView = new OutputView();
-        orderService = new OrderService();
-        benefitService = new BenefitService();
+    public EventController(InputView inputView, OutputView outputView, OrderService orderService, BenefitService benefitService) {
+        this.inputView = inputView;
+        this.outputView = outputView;
+        this.orderService = orderService;
+        this.benefitService = benefitService;
     }
 
     public void game() {

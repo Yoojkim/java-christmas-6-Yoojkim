@@ -7,7 +7,7 @@ public enum DiscountWeekType {
     private final Menu.MenuType menuType;
     private final String typeName;
 
-    DiscountWeekType(int discountPrice, Menu.MenuType menuType, String typeName) {
+    DiscountWeekType(final int discountPrice, final Menu.MenuType menuType, final String typeName) {
         this.discountPrice = discountPrice;
         this.menuType = menuType;
         this.typeName = typeName;

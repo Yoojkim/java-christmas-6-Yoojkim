@@ -4,7 +4,6 @@ import christmas.domain.VisitDate;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -34,9 +33,5 @@ public class SpecialDaysTest {
 
             Assertions.assertThat(SpecialDays.isSpecialDay(new VisitDate(date))).isFalse();
         }
-
-
     }
-
-
 }

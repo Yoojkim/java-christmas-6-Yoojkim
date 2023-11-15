@@ -9,7 +9,7 @@ public enum Badge {
     private final String shape;
     private final int minPrice;
 
-    Badge(String shape, int minPrice) {
+    Badge(final String shape, final int minPrice) {
         this.shape = shape;
         this.minPrice = minPrice;
     }
@@ -22,7 +22,7 @@ public enum Badge {
         return shape;
     }
 
-    public static Badge getBadge(int allDiscountPrice) {
+    public static Badge getBadge(final int allDiscountPrice) {
         Badge nowBadge = Badge.NONE;
 
         for (Badge badge : Badge.values()) {

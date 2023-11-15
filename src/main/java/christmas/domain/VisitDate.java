@@ -13,15 +13,12 @@ public class VisitDate {
     private final int START_CHRISTMAS_DISCOUNT = 1000;
     private final int CHRISTMAS_INCREASE_VALUE = 100;
 
-    private int visitDate;
+    private final int visitDate;
 
     public VisitDate(int date) {
         validateDate(date);
-        this.visitDate = date;
-    }
 
-    public int getVisitDate() {
-        return visitDate;
+        this.visitDate = date;
     }
 
     public DiscountWeekType getWeekType() {
@@ -44,6 +41,10 @@ public class VisitDate {
         if (date < MIN || date > MAX) {
             throw new IllegalArgumentException(ErrorMessage.VISIT_DATE_RANGE.getMessage());
         }
+    }
+
+    public int getVisitDate() {
+        return visitDate;
     }
 
     @Override

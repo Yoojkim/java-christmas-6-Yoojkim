@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public enum Menu {
-    NONE("",0,MenuType.NONE),
+    NONE("", 0, MenuType.NONE),
     MUSHROOM_SOUP("양송이수프", 6000, MenuType.APPETIZER),
     TAPAS("타파스", 5500, MenuType.APPETIZER),
     CAESAR_SALAD("시저샐러드", 8000, MenuType.APPETIZER),
@@ -29,7 +29,7 @@ public enum Menu {
         }
     }
 
-    Menu(String name, int cost, MenuType type) {
+    Menu(final String name, final int cost, final MenuType type) {
         this.name = name;
         this.cost = cost;
         this.type = type;
@@ -47,13 +47,13 @@ public enum Menu {
         return cost;
     }
 
-    public static Menu createMenu(String manuName) {
+    public static Menu createMenu(final String manuName) {
         validateMenuName(manuName);
 
         return nameMap.get(manuName);
     }
 
-    public static void validateMenuName(String name) {
+    public static void validateMenuName(final String name) {
         if (!nameMap.containsKey(name)) {
             throw new IllegalArgumentException(ErrorMessage.MENU_NOT_PROPER.getMessage());
         }

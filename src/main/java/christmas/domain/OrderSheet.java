@@ -10,7 +10,7 @@ public class OrderSheet {
     private final Orders orders;
     private final VisitDate visitDate;
 
-    public OrderSheet(Orders orders, VisitDate visitDate) {
+    public OrderSheet(final Orders orders, final VisitDate visitDate) {
         this.orders = orders;
         this.visitDate = visitDate;
     }
@@ -25,8 +25,12 @@ public class OrderSheet {
         return priceSum;
     }
 
-    public DiscountWeekType getWeekType() {
-        return visitDate.getWeekType();
+    public Menu calculateGiveAway() {
+        if (orders.hasGiveAway()) {
+            return GIVEAWAY;
+        }
+
+        return Menu.NONE;
     }
 
     public int calculateSpecialDiscount() {
@@ -49,12 +53,8 @@ public class OrderSheet {
         return orders.getWeekTypeDiscountPrice(visitDate.getWeekType());
     }
 
-    public Menu calculateGiveAway() {
-        if (orders.hasGiveAway()) {
-            return GIVEAWAY;
-        }
-
-        return Menu.NONE;
+    public DiscountWeekType getWeekType() {
+        return visitDate.getWeekType();
     }
 }
 

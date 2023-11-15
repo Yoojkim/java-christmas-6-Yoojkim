@@ -10,15 +10,15 @@ import christmas.util.PrintMessage;
 import java.text.DecimalFormat;
 
 public class OutputView {
-    public void printPrintMessage(PrintMessage printMessage) {
+    public void printPrintMessage(final PrintMessage printMessage) {
         System.out.print(printMessage.getMessage());
     }
 
-    public void printStartEventBenefit(int visitDate) {
+    public void printStartEventBenefit(final int visitDate) {
         printMessage(String.format(PrintMessage.START_EVENT_BENEFIT.getMessage(), visitDate));
     }
 
-    public void printOrders(OrdersDto orders) {
+    public void printOrders(final OrdersDto orders) {
         StringBuilder sb = new StringBuilder();
         sb.append(PrintMessage.ORDER_MENU.getMessage());
 
@@ -31,7 +31,7 @@ public class OutputView {
         printMessage(sb.toString());
     }
 
-    public void printBenefit(BenefitDto benefitDto) {
+    public void printBenefit(final BenefitDto benefitDto) {
         StringBuilder sb = new StringBuilder();
 
         DecimalFormat df = new DecimalFormat("###,###");
@@ -39,24 +39,24 @@ public class OutputView {
         printBeforeDiscountPrice(sb, df.format(benefitDto.beforeDiscountPrice()));
         printGiveAway(sb, benefitDto);
         printBenefits(sb, benefitDto, df);
-        printAllDiscount(sb, df.format(benefitDto.allDiscount()*-1));
+        printAllDiscount(sb, df.format(benefitDto.allDiscount() * -1));
         printAfterDiscountPrice(sb, df.format(benefitDto.afterDiscountPrice()));
         printBadge(sb, benefitDto);
 
         printMessage(sb.toString());
     }
 
-    private void printBeforeDiscountPrice(StringBuilder sb, String beforeDiscountPrice) {
+    private void printBeforeDiscountPrice(final StringBuilder sb, final String beforeDiscountPrice) {
         sb.append(PrintMessage.BEFORE_DISCOUNT_PRICE.getMessage());
         sb.append(String.format(PrintMessage.PRICE_MESSAGE_FORMAT.getMessage(), beforeDiscountPrice)).append("\n");
     }
 
-    private void printAfterDiscountPrice(StringBuilder sb, String afterDiscountPrice) {
+    private void printAfterDiscountPrice(final StringBuilder sb, final String afterDiscountPrice) {
         sb.append(PrintMessage.AFTER_DISCOUNT_PRICE.getMessage());
         sb.append(String.format(PrintMessage.PRICE_MESSAGE_FORMAT.getMessage(), afterDiscountPrice)).append("\n");
     }
 
-    private void printGiveAway(StringBuilder sb, BenefitDto benefitDto) {
+    private void printGiveAway(final StringBuilder sb, final BenefitDto benefitDto) {
         sb.append(PrintMessage.GIVEAWAY.getMessage());
 
         if (benefitDto.giveAway() == Menu.NONE) {
@@ -67,12 +67,12 @@ public class OutputView {
         sb.append(String.format(PrintMessage.MENU_MESSAGE_FORMAT.getMessage(), benefitDto.giveAway().getName(), benefitDto.giveAwayQuantity())).append("\n");
     }
 
-    private void printAllDiscount(StringBuilder sb, String allDiscountPrice) {
+    private void printAllDiscount(final StringBuilder sb, final String allDiscountPrice) {
         sb.append(PrintMessage.ALL_DISCOUNT.getMessage());
         sb.append(String.format(PrintMessage.PRICE_MESSAGE_FORMAT.getMessage(), allDiscountPrice)).append("\n");
     }
 
-    private void printBadge(StringBuilder sb, BenefitDto benefitDto) {
+    private void printBadge(final StringBuilder sb, final BenefitDto benefitDto) {
         sb.append(PrintMessage.BADGE.getMessage());
 
         if (benefitDto.badge() == Badge.NONE) {
@@ -83,7 +83,7 @@ public class OutputView {
         sb.append(benefitDto.badge().getShape()).append("\n");
     }
 
-    private void printBenefits(StringBuilder sb, BenefitDto benefitDto, DecimalFormat df) {
+    private void printBenefits(final StringBuilder sb, final BenefitDto benefitDto, final DecimalFormat df) {
         sb.append(PrintMessage.BENEFIT_LIST.getMessage());
 
         if (benefitDto.allDiscount() == 0) {
@@ -99,39 +99,39 @@ public class OutputView {
         sb.append("\n");
     }
 
-    private void printChristmasDiscount(StringBuilder sb, BenefitDto benefitDto, DecimalFormat df) {
+    private void printChristmasDiscount(final StringBuilder sb, final BenefitDto benefitDto, final DecimalFormat df) {
         if (benefitDto.christMasDiscount() == 0) {
             return;
         }
 
-        sb.append(String.format(PrintMessage.CHRISTMAS_DISCOUNT_MESSAGE_FORMAT.getMessage(), df.format(benefitDto.christMasDiscount()*-1)));
+        sb.append(String.format(PrintMessage.CHRISTMAS_DISCOUNT_MESSAGE_FORMAT.getMessage(), df.format(benefitDto.christMasDiscount() * -1)));
     }
 
-    private void printWeekDiscount(StringBuilder sb, BenefitDto benefitDto, DecimalFormat df) {
+    private void printWeekDiscount(final StringBuilder sb, final BenefitDto benefitDto, final DecimalFormat df) {
         if (benefitDto.weekDiscount() == 0) {
             return;
         }
 
-        sb.append(String.format(PrintMessage.WEEK_DISCOUNT_MESSAGE_FORMAT.getMessage(), benefitDto.weekTypeName(), df.format(benefitDto.weekDiscount()*-1)));
+        sb.append(String.format(PrintMessage.WEEK_DISCOUNT_MESSAGE_FORMAT.getMessage(), benefitDto.weekTypeName(), df.format(benefitDto.weekDiscount() * -1)));
     }
 
-    private void printSpecialDiscount(StringBuilder sb, BenefitDto benefitDto, DecimalFormat df) {
+    private void printSpecialDiscount(final StringBuilder sb, final BenefitDto benefitDto, final DecimalFormat df) {
         if (benefitDto.specialDiscount() == 0) {
             return;
         }
 
-        sb.append(String.format(PrintMessage.SPECIAL_DISCOUNT_MESSAGE_FORMAT.getMessage(), df.format(benefitDto.specialDiscount()*-1)));
+        sb.append(String.format(PrintMessage.SPECIAL_DISCOUNT_MESSAGE_FORMAT.getMessage(), df.format(benefitDto.specialDiscount() * -1)));
     }
 
-    private void printGiveAwayDiscount(StringBuilder sb, BenefitDto benefitDto, DecimalFormat df) {
+    private void printGiveAwayDiscount(final StringBuilder sb, final BenefitDto benefitDto, final DecimalFormat df) {
         if (benefitDto.giveAway().getCost() == 0) {
             return;
         }
 
-        sb.append(String.format(PrintMessage.GIVEAWAY_DISCOUNT_MESSAGE_FORMAT.getMessage(), df.format(benefitDto.giveAway().getCost()*-1)));
+        sb.append(String.format(PrintMessage.GIVEAWAY_DISCOUNT_MESSAGE_FORMAT.getMessage(), df.format(benefitDto.giveAway().getCost() * -1)));
     }
 
-    private void printMessage(String message) {
+    private void printMessage(final String message) {
         System.out.print(message);
     }
 }

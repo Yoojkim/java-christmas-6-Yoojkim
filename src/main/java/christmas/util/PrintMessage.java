@@ -22,7 +22,7 @@ public enum PrintMessage {
 
     private final String message;
 
-    PrintMessage(String message) {
+    PrintMessage(final String message) {
         this.message = message;
     }
 

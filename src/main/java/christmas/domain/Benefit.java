@@ -49,7 +49,7 @@ public class Benefit {
         return GIVEAWAY_QUANTITY;
     }
 
-    public static Benefit createBenefit(OrderSheet orderSheet){
+    public static Benefit createBenefit(final OrderSheet orderSheet) {
         if (!orderSheet.isEventTarget()) {
             return Benefit.builder().build();
         }

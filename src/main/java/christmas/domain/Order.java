@@ -13,6 +13,13 @@ public class Order {
         this.quantity = quantity;
     }
 
+    public static Order createOrder(String inputMenuName, int inputQuantity) {
+        Menu orderMenu = Menu.createMenu(inputMenuName);
+        Quantity orderQuantity = new Quantity(inputQuantity);
+
+        return new Order(orderMenu, orderQuantity);
+    }
+
     public int getOrderPrice() {
         return menu.getCost() * quantity.getQuantity();
     }
@@ -25,11 +32,8 @@ public class Order {
         orderMenuSet.add(menu);
     }
 
-    public static Order createOrder(String inputMenuName, int inputQuantity) {
-        Menu orderMenu = Menu.createMenu(inputMenuName);
-        Quantity orderQuantity = new Quantity(inputQuantity);
-
-        return new Order(orderMenu, orderQuantity);
+    public boolean hasMenuType(Menu.MenuType menuType) {
+        return menu.getType() == menuType;
     }
 
     public int getQuantity() {
@@ -38,9 +42,5 @@ public class Order {
 
     public Menu getMenu() {
         return menu;
-    }
-
-    public boolean hasMenuType(Menu.MenuType menuType) {
-        return menu.getType() == menuType;
     }
 }

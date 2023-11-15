@@ -8,12 +8,13 @@ public enum ErrorMessage {
     ONLY_DRINK_TYPE_MENU("음료만 주문 시, 주문할 수 없습니다.");
 
     private final String message;
+    private final String PREFIX = "[ERROR] ";
 
     ErrorMessage(String message) {
         this.message = message;
     }
 
     public String getMessage() {
-        return "[ERROR] " + this.message;
+        return PREFIX + this.message;
     }
 }

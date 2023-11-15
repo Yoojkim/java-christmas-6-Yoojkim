@@ -4,7 +4,9 @@ import christmas.util.DiscountWeekType;
 import christmas.util.ErrorMessage;
 import christmas.util.Menu;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class Orders {
     private final int MIN_PRICE_FOR_EVENT = 10000;
@@ -12,16 +14,12 @@ public class Orders {
     private final int MAX_QUANTITY = 20;
     private final List<Order> orders;
 
-    public Orders(List<Order> orders) {
+    public Orders(final List<Order> orders) {
         validateMenuDuplication(orders);
         validateMenuSize(orders);
         validateNonDrinkType(orders);
 
         this.orders = orders;
-    }
-
-    public List<Order> getOrders() {
-        return this.orders;
     }
 
     public boolean isEventTarget() {
@@ -40,7 +38,7 @@ public class Orders {
         return false;
     }
 
-    public int getWeekTypeDiscountPrice(DiscountWeekType discountWeekType) {
+    public int getWeekTypeDiscountPrice(final DiscountWeekType discountWeekType) {
         int discountPrice = 0;
 
         for (Order order : orders) {
@@ -50,6 +48,10 @@ public class Orders {
         }
 
         return discountPrice;
+    }
+
+    public List<Order> getOrders() {
+        return this.orders;
     }
 
     private int getAllPrice() {
@@ -62,7 +64,7 @@ public class Orders {
         return priceSum;
     }
 
-    private void validateMenuDuplication(List<Order> orders) {
+    private void validateMenuDuplication(final List<Order> orders) {
         Set<Menu> menuSet = new HashSet<>();
 
         for (Order order : orders) {
@@ -74,7 +76,7 @@ public class Orders {
         }
     }
 
-    private void validateMenuSize(List<Order> orders) {
+    private void validateMenuSize(final List<Order> orders) {
         int quantitySum = 0;
 
         for (Order order : orders) {
@@ -86,7 +88,7 @@ public class Orders {
         }
     }
 
-    private void validateNonDrinkType(List<Order> orders) {
+    private void validateNonDrinkType(final List<Order> orders) {
         boolean ordersHaveOnlyDrinkMenu = true;
 
         for (Order order : orders) {

@@ -15,9 +15,10 @@ public class SpecialDays {
         }
     }
 
-    private SpecialDays(){}
+    private SpecialDays() {
+    }
 
-    public static boolean isSpecialDay(VisitDate date){
+    public static boolean isSpecialDay(final VisitDate date) {
         return specialDays.contains(date);
     }
 }
