@@ -15,17 +15,17 @@ public class OrderSheet {
         this.visitDate = visitDate;
     }
 
-    public int calculateAllPrice(){
-        int priceSum=0;
+    public int calculateAllPrice() {
+        int priceSum = 0;
 
-        for(Order order:orders.getOrders()){
-            priceSum+= order.getOrderPrice();
+        for (Order order : orders.getOrders()) {
+            priceSum += order.getOrderPrice();
         }
 
         return priceSum;
     }
 
-    public DiscountWeekType getWeekType(){
+    public DiscountWeekType getWeekType() {
         return visitDate.getWeekType();
     }
 
