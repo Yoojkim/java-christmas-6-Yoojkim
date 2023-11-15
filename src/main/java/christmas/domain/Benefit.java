@@ -1,23 +1,32 @@
 package christmas.domain;
 
 import christmas.util.Badge;
+import christmas.util.Menu;
 
 public class Benefit {
     boolean hasGiveAway = false;
     int christMasDiscount = 0;
     int weekDiscount = 0;
     int specialDiscount = 0;
-    Badge badge = Badge.NONE;
 
     public Benefit() {
     }
 
-    public Benefit(boolean hasGiveAway, int christMasDiscount, int weekDiscount, int specialDiscount, Badge badge) {
+    public Benefit(boolean hasGiveAway, int christMasDiscount, int weekDiscount, int specialDiscount) {
         this.hasGiveAway = hasGiveAway;
         this.christMasDiscount = christMasDiscount;
         this.weekDiscount = weekDiscount;
         this.specialDiscount = specialDiscount;
-        this.badge = badge;
+    }
+
+    public Badge getBadge(Menu giveAway) {
+        int discountSum = christMasDiscount + weekDiscount + specialDiscount;
+
+        if (hasGiveAway) {
+            discountSum += giveAway.getCost();
+        }
+
+        return Badge.getBadge(discountSum);
     }
 }
 
