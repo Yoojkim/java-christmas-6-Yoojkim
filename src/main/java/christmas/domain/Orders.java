@@ -20,6 +20,10 @@ public class Orders {
         this.orders = orders;
     }
 
+    public List<Order> getOrders() {
+        return this.orders;
+    }
+
     public boolean isEventTarget() {
         if (getAllPrice() < MIN_PRICE_FOR_EVENT) {
             return false;
@@ -41,7 +45,7 @@ public class Orders {
 
         for (Order order : orders) {
             if (order.hasMenuType(discountWeekType.getMenuType())) {
-                discountPrice += discountWeekType.getDiscountPrice()*order.getQuantity();
+                discountPrice += discountWeekType.getDiscountPrice() * order.getQuantity();
             }
         }
 
@@ -92,7 +96,7 @@ public class Orders {
             }
         }
 
-        if(ordersHaveOnlyDrinkMenu){
+        if (ordersHaveOnlyDrinkMenu) {
             throw new IllegalArgumentException(ErrorMessage.ONLY_DRINK_TYPE_MENU.getMessage());
         }
     }

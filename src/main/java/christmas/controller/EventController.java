@@ -2,6 +2,7 @@ package christmas.controller;
 
 import christmas.domain.Orders;
 import christmas.domain.VisitDate;
+import christmas.dto.OrdersDto;
 import christmas.service.BenefitService;
 import christmas.service.OrderService;
 import christmas.util.PrintMessage;
@@ -30,7 +31,7 @@ public class EventController {
         Orders orders = createOrders();
         outputView.printStartEventBenefit(visitDate.getVisitDate());
 
-        //주문 메뉴 출력
+        outputView.printOrders(OrdersDto.from(orders));
 
         //할인 관련 출력
 

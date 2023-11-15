@@ -36,7 +36,11 @@ public class Order {
         return quantity.getQuantity();
     }
 
+    public Menu getMenu() {
+        return menu;
+    }
+
     public boolean hasMenuType(Menu.MenuType menuType) {
-        return menu.getType()==menuType;
+        return menu.getType() == menuType;
     }
 }
