@@ -64,7 +64,7 @@ public class OutputView {
             return;
         }
 
-        sb.append(String.format(PrintMessage.MENU_MESSAGE_FORMAT.getMessage(), benefitDto.giveAway().getName(), 1)).append("\n");
+        sb.append(String.format(PrintMessage.MENU_MESSAGE_FORMAT.getMessage(), benefitDto.giveAway().getName(), benefitDto.giveAwayQuantity())).append("\n");
     }
 
     private void printAllDiscount(StringBuilder sb, String allDiscountPrice) {

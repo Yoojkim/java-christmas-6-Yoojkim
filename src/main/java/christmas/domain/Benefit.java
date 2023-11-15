@@ -4,6 +4,7 @@ import christmas.util.Badge;
 import christmas.util.Menu;
 
 public class Benefit {
+    private final int GIVEAWAY_QUANTITY = 1;
     private final Menu giveAway;
     private final int christMasDiscount;
     private final int weekDiscount;
@@ -21,12 +22,11 @@ public class Benefit {
     }
 
     public Badge getBadge() {
-        int discountSum = christMasDiscount + weekDiscount + specialDiscount + giveAway.getCost();
-        return Badge.getBadge(discountSum);
+        return Badge.getBadge(getAllDiscount());
     }
 
     public int getAllDiscount() {
-        return christMasDiscount + weekDiscount + specialDiscount + giveAway.getCost();
+        return christMasDiscount + weekDiscount + specialDiscount + (giveAway.getCost() * GIVEAWAY_QUANTITY);
     }
 
     public Menu getGiveAway() {
@@ -43,6 +43,10 @@ public class Benefit {
 
     public int getSpecialDiscount() {
         return specialDiscount;
+    }
+
+    public int getGiveAwayQuantity() {
+        return GIVEAWAY_QUANTITY;
     }
 
     public static class Builder {

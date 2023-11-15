@@ -5,7 +5,7 @@ import christmas.domain.OrderSheet;
 import christmas.util.Badge;
 import christmas.util.Menu;
 
-public record BenefitDto(int beforeDiscountPrice, Menu giveAway, int christMasDiscount,
+public record BenefitDto(int beforeDiscountPrice, Menu giveAway, int giveAwayQuantity, int christMasDiscount,
                          int weekDiscount, int specialDiscount, String weekTypeName,
                          int allDiscount, int afterDiscountPrice, Badge badge) {
     public static BenefitDto from(OrderSheet orderSheet, Benefit benefit) {
@@ -13,6 +13,7 @@ public record BenefitDto(int beforeDiscountPrice, Menu giveAway, int christMasDi
 
         return new BenefitDto(orderSheetPrice,
                 benefit.getGiveAway(),
+                benefit.getGiveAwayQuantity(),
                 benefit.getChristMasDiscount(),
                 benefit.getWeekDiscount(),
                 benefit.getSpecialDiscount(),
