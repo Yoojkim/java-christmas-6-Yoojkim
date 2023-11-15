@@ -9,6 +9,6 @@ import christmas.view.OutputView;
 public class Application {
     public static void main(String[] args) {
         EventController eventController=new EventController(new InputView(), new OutputView(), new OrderService(), new BenefitService());
-        eventController.game();
+        eventController.event();
     }
 }
