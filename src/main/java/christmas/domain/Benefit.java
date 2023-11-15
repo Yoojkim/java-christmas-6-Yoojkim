@@ -25,11 +25,31 @@ public class Benefit {
         return Badge.getBadge(discountSum);
     }
 
+    public int getAllDiscount() {
+        return christMasDiscount + weekDiscount + specialDiscount + giveAway.getCost();
+    }
+
+    public Menu getGiveAway() {
+        return giveAway;
+    }
+
+    public int getChristMasDiscount() {
+        return christMasDiscount;
+    }
+
+    public int getWeekDiscount() {
+        return weekDiscount;
+    }
+
+    public int getSpecialDiscount() {
+        return specialDiscount;
+    }
+
     public static class Builder {
-        private Menu giveAway;
-        private int christMasDiscount;
-        private int weekDiscount;
-        private int specialDiscount;
+        private Menu giveAway = Menu.NONE;
+        private int christMasDiscount = 0;
+        private int weekDiscount = 0;
+        private int specialDiscount = 0;
 
         public Builder() {
         }

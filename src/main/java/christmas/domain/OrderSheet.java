@@ -1,5 +1,6 @@
 package christmas.domain;
 
+import christmas.util.DiscountWeekType;
 import christmas.util.Menu;
 import christmas.util.SpecialDays;
 
@@ -12,6 +13,20 @@ public class OrderSheet {
     public OrderSheet(Orders orders, VisitDate visitDate) {
         this.orders = orders;
         this.visitDate = visitDate;
+    }
+
+    public int calculateAllPrice(){
+        int priceSum=0;
+
+        for(Order order:orders.getOrders()){
+            priceSum+= order.getOrderPrice();
+        }
+
+        return priceSum;
+    }
+
+    public DiscountWeekType getWeekType(){
+        return visitDate.getWeekType();
     }
 
     public int calculateSpecialDiscount() {

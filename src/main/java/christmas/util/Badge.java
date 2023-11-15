@@ -14,15 +14,19 @@ public enum Badge {
         this.minPrice = minPrice;
     }
 
-    public int getMinPrice(){
+    public int getMinPrice() {
         return minPrice;
     }
 
-    public static Badge getBadge (int allDiscountPrice){
+    public String getShape() {
+        return shape;
+    }
+
+    public static Badge getBadge(int allDiscountPrice) {
         Badge nowBadge = Badge.NONE;
 
-        for(Badge badge:Badge.values()){
-            if(allDiscountPrice>=badge.getMinPrice()){
+        for (Badge badge : Badge.values()) {
+            if (allDiscountPrice >= badge.getMinPrice()) {
                 nowBadge = badge;
             }
         }

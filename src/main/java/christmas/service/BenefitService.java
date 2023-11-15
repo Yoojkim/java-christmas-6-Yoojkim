@@ -2,7 +2,6 @@ package christmas.service;
 
 import christmas.domain.Benefit;
 import christmas.domain.OrderSheet;
-import christmas.util.Badge;
 
 public class BenefitService {
     public Benefit calculateBenefit(OrderSheet orderSheet) {
@@ -16,9 +15,5 @@ public class BenefitService {
                 .specialDiscount(orderSheet.calculateSpecialDiscount())
                 .giveAway(orderSheet.calculateGiveAway())
                 .build();
-    }
-
-    public Badge createBadge(Benefit benefit) {
-        return benefit.getBadge();
     }
 }

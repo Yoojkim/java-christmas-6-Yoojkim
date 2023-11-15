@@ -1,7 +1,10 @@
 package christmas.controller;
 
+import christmas.domain.Benefit;
+import christmas.domain.OrderSheet;
 import christmas.domain.Orders;
 import christmas.domain.VisitDate;
+import christmas.dto.BenefitDto;
 import christmas.dto.OrdersDto;
 import christmas.service.BenefitService;
 import christmas.service.OrderService;
@@ -32,10 +35,9 @@ public class EventController {
         outputView.printStartEventBenefit(visitDate.getVisitDate());
 
         outputView.printOrders(OrdersDto.from(orders));
-
-        //할인 관련 출력
-
-        //혜택 내역 출력
+        OrderSheet orderSheet = new OrderSheet(orders, visitDate);
+        Benefit benefit = benefitService.calculateBenefit(orderSheet);
+        outputView.printBenefit(BenefitDto.from(orderSheet, benefit));
     }
 
     private VisitDate createVisitDate() {
