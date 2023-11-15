@@ -14,11 +14,10 @@ public enum PrintMessage {
     BADGE("<12월 이벤트 배지>\n"),
     MENU_MESSAGE_FORMAT("%s %d개\n"),
     PRICE_MESSAGE_FORMAT("%s원\n"),
-    DISCOUNT_PRICE_MESSAGE_FORMAT("-%s원\n"),
-    CHRISTMAS_DISCOUNT_MESSAGE_FORMAT("크리스마스 디데이 할인: -%s원\n"),
-    WEEK_DISCOUNT_MESSAGE_FORMAT("%s 할인: -%s원\n"),
-    SPECIAL_DISCOUNT_MESSAGE_FORMAT("특별 할인: -%s원\n"),
-    GIVEAWAY_DISCOUNT_MESSAGE_FORMAT("증정 이벤트: -%s원\n"),
+    CHRISTMAS_DISCOUNT_MESSAGE_FORMAT("크리스마스 디데이 할인: %s원\n"),
+    WEEK_DISCOUNT_MESSAGE_FORMAT("%s 할인: %s원\n"),
+    SPECIAL_DISCOUNT_MESSAGE_FORMAT("특별 할인: %s원\n"),
+    GIVEAWAY_DISCOUNT_MESSAGE_FORMAT("증정 이벤트: %s원\n"),
     NONE("없음\n");
 
     private final String message;
