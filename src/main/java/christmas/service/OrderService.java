@@ -9,9 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OrderService {
-
     public VisitDate createVisitDate(String inputDate) {
-        int date = parseStringToInt(inputDate);
+        int date = parseStringToInt(inputDate, ErrorMessage.VISIT_DATE_RANGE);
 
         return new VisitDate(date);
     }
@@ -36,7 +35,7 @@ public class OrderService {
         String[] separatedOrder = inputOrder.split(orderSeparator, -1);
         validateSeparatedOrderFormat(separatedOrder);
 
-        return Order.createOrder(separatedOrder[0], parseStringToInt(separatedOrder[1]));
+        return Order.createOrder(separatedOrder[0], parseStringToInt(separatedOrder[1], ErrorMessage.MENU_NOT_PROPER));
     }
 
     private void validateSeparatedOrderFormat(String[] separatedOrder) {
@@ -45,14 +44,13 @@ public class OrderService {
         }
     }
 
-    //todo: VisitDate, Quantity에 동일하게 사용 중 -> 변경?
-    private Integer parseStringToInt(String value) {
+    private Integer parseStringToInt(String value,ErrorMessage errorMessage) {
         Integer formattedValue = null;
 
         try {
             formattedValue = Integer.parseInt(value);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(ErrorMessage.INPUT_IS_NOT_INT.getMessage());
+            throw new IllegalArgumentException(errorMessage.getMessage());
         }
 
         return formattedValue;
