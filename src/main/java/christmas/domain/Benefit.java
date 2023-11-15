@@ -49,6 +49,19 @@ public class Benefit {
         return GIVEAWAY_QUANTITY;
     }
 
+    public static Benefit createBenefit(OrderSheet orderSheet){
+        if (!orderSheet.isEventTarget()) {
+            return Benefit.builder().build();
+        }
+
+        return Benefit.builder()
+                .christMasDiscount(orderSheet.calculateChristmasDiscount())
+                .weekDiscount(orderSheet.calculateWeekDiscount())
+                .specialDiscount(orderSheet.calculateSpecialDiscount())
+                .giveAway(orderSheet.calculateGiveAway())
+                .build();
+    }
+
     public static class Builder {
         private Menu giveAway = Menu.NONE;
         private int christMasDiscount = 0;
