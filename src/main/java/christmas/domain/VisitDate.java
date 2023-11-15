@@ -4,7 +4,6 @@ import christmas.util.DiscountWeekType;
 import christmas.util.ErrorMessage;
 import christmas.util.WeekCalculator;
 
-
 public class VisitDate {
     private final int MIN = 1;
     private final int MAX = 31;
@@ -46,9 +45,6 @@ public class VisitDate {
             throw new IllegalArgumentException(ErrorMessage.VISIT_DATE_RANGE.getMessage());
         }
     }
-
-    //todo: compare hashcode
-
 
     @Override
     public int hashCode() {
